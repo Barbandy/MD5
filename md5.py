@@ -74,8 +74,7 @@ def operator(fun, a, b, c, d, x, s, ac):
     a = a + fun (b, c, d) + (x) + (ac)
     a = rotateLeft (a, s)
     a = a + b
-    return a
-		
+    return a	
 
 def rounds(buf, x):
     a = buf[0]
@@ -180,14 +179,9 @@ def rounds(buf, x):
     buf[3] += d
 	
     return buf
-	
-	
-def main():
-    print "md5"
-    data = ""
-    args = getArgs()
-    data = readFile(args.inFile)
-    data = [ord(i) for i in data]
+
+def calc_md5(data):
+	data = [ord(i) for i in data]
 	
     # Шаг 1 Выравнивание потока
     # Шаг 2 Добавление длины сообщения
@@ -222,6 +216,15 @@ def main():
     res = ""
     for i in buf:
         res += "{:08x}".format(toLittleEndian(i))
+		
+	return res
+	
+def main():
+    print "md5"
+    data = ""
+    args = getArgs()
+    data = readFile(args.inFile)
+    res= calc_md5(data)
     print "hash: ", res
     writeFile(args.outFile, res)
 	
