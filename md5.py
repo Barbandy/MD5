@@ -181,7 +181,7 @@ def rounds(buf, x):
     return buf
 
 def calc_md5(data):
-	data = [ord(i) for i in data]
+    data = [ord(i) for i in data]
 	
     # Шаг 1 Выравнивание потока
     # Шаг 2 Добавление длины сообщения
@@ -217,7 +217,7 @@ def calc_md5(data):
     for i in buf:
         res += "{:08x}".format(toLittleEndian(i))
 		
-	return res
+    return res
 	
 def main():
     print "md5"
